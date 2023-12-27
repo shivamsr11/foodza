@@ -21,8 +21,9 @@ const Body = () => {
     const fetchData = async () => {
         const data = await fetch(MAIN_API);
         const json = await data.json();
-        setListOfRestaurant(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setFilteredRestaurant(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        console.log(json)
+        setListOfRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
     const onlineStatus = useOnlineStatus();
@@ -38,7 +39,7 @@ const Body = () => {
                 value = {searchText} onChange = {(e)=>{
                     setSearchText(e.target.value)
                 }}></input>
-                <button className="bg-blue-500 ml-3  hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded"
+                <button className="bg-blue-500  ml-3  hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded"
                  onClick = {()=>{
                        const filteredRestaurant = listOfRestaurant.filter((res)=>
                         res?.info?.name?.toUpperCase().includes(searchText?.toUpperCase())
@@ -53,19 +54,13 @@ const Body = () => {
                         console.log(topRatedButton)
                         if(topRatedButton){
                             const filteredList = listOfRestaurant.filter(
-                                (res) => res?.info?.avgRating > "4.3"
-                            );
+                                (res) => res?.info?.avgRating > "4.3");
                             setFilteredRestaurant(filteredList)
-                            ;
                         }
                         else{
                             setFilteredRestaurant(listOfRestaurant)
-
-                        }
-                       
-                    }}
-                >
-                    Top Rated Restaurant</button>
+                            }
+                       }}>Top Rated Restaurant</button>
             </div>
             <div className="flex flex-wrap h-[65vh] overflow-y-auto">
                 {

@@ -8,6 +8,7 @@ import {Outlet} from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
 import SignIn from "./components/SignIn";
 
+
 const Cart = lazy(()=> import("./components/Cart"));
 
 export const appRouter = createBrowserRouter([
@@ -32,6 +33,8 @@ export const appRouter = createBrowserRouter([
   }
 
 ])
+
+
 function App() {
   return (
     <div>

@@ -82,10 +82,10 @@ const navigate = useNavigate()
    
     <div>
        <div className='absolute'>
-        <img className='w-screen'  src = {BG_IMG} alt = "bg-logo" />
+        <img className='w-screen sm:w-screen md:w-screen lg:w-screen xl:w-screen 2xl:w-screen h-screen sm:h-screen md:h-screen lg:h-screen'  src = {BG_IMG} alt = "bg-logo" />
       </div>
           <form   onSubmit = {(e)=>e.preventDefault()}
- className="absolute text-white p-12 w-4/12 my-20  mx-auto left-0 right-0 bg-black bg-opacity-90">
+ className="absolute text-white p-12 w-[60vh] sm:w-[70vh] md:w-[75vh] lg:w-[75vh] xl:w-[75vh] 2xl:w-[75vh] my-20  mx-auto left-0 right-0 bg-black bg-opacity-90">
         <h1 className=" text-3xl py-3">{isSignInForm ? "Sign In" : "Sign Up"}</h1>
         {!isSignInForm &&
           <input ref = {fullName} type="text" placeholder="Full Name" title='fullName'
