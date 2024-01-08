@@ -1,11 +1,9 @@
 import ItemList from "./ItemList";
 import {clearCart} from "../utils/cartSlice";
 import {useSelector, useDispatch} from "react-redux";
-import { BG_IMG_CART } from "../utils/constants";
 
 const Cart =()=>{
     const cartItems = useSelector((store) => store.cart.items)
-
     const dispatch = useDispatch();
 
     const handleClearCart = () =>{
@@ -13,30 +11,22 @@ const Cart =()=>{
     }
 
     return(
-        <div className="text-center m-4 p-4">
-            <h1 className="text-2xl font-bold">{ cartItems.length === 0 ? "Cart is Empty" :  "Cart"}</h1>
-            <div className="w-6/12 m-auto">
-                {cartItems.length !== 0 &&  (<button className="p-2 w-28 my-2 ml-[53rem] bg-black text-white rounded-lg" 
+        <>
+        <div className="flex justify-end w-screen">
+            <div className="mt-[130px] ">
+            {cartItems?.length !== 0 &&  (<button className="p-2 mr-[30px] w-28 my-2 bg-black text-white rounded-lg" 
                 onClick={handleClearCart}>Clear Cart</button>)}
-                <ItemList items = {cartItems}/>
+            </div>
+            </div>
+        <div className="flex justify-center p-4 w-screen">
+            <div className="w-[400px] sm:w-[600px] md:w-[700px] lg:w-[700px]  xl:w-[730px]  ">
+            <h1 className="">{ cartItems?.length === 0 ? <div className="text-2xl font-bold text-center mt-[1px] 
+                mb-[32px]">Cart is Empty</div> : <div className="text-2xl font-bold text-center mt-[-100px] 
+                mb-[32px]"> Cart</div>}</h1>
+                <ItemList className = " ml-[50vh]" items = {cartItems}/>
          </div>
-
         </div>
-//         <div>
-//             <div className = "  mt-2 pt-4 ">
-//             {
-//             !cartItems.length  && 
-//             (<h1 className = "text-2xl font-bold ml-[38rem]  text-black">Cart is empty</h1>) 
-//             }
-//           {  cartItems.length && ( <div><h1 className = "text-2xl ml-[42rem] font-bold text-black">Cart</h1>
-//             <button className = "py-3  px-2  ml-[78rem] bg-black text-white font-bold rounded-lg"
-//              onClick = {handleClearCart}>Clear Cart</button></div>
-// )} </div>
-           
-//             <div className = " w-[3/12]  bg-gray-200 mt-28  pt-4">
-//                <ItemList items = {cartItems}/>
-//            </div>
-//        </div>
+        </>
     )
 }
 

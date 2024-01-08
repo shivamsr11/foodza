@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import {Link} from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import {MAIN_API} from "../utils/constants"
+import {MAIN_API, swiggyAPI} from "../utils/constants"
 
 
 const Body = () => {
@@ -19,11 +19,14 @@ const Body = () => {
         fetchData();
     }, []);
     const fetchData = async () => {
-        const data = await fetch(MAIN_API);
-        const json = await data.json();
-        console.log(json)
-        setListOfRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        const data = await fetch(swiggyAPI);
+        const json = await data?.json();
+       const resList = json?.data?.cards?.filter(
+            res=> res?.card?.card?.id ==="restaurant_grid_listing"
+        )
+        const mainDataPath = resList?.[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+        setListOfRestaurant(mainDataPath);
+        setFilteredRestaurant(mainDataPath);
     }
 
     const onlineStatus = useOnlineStatus();
@@ -32,28 +35,30 @@ const Body = () => {
 
     return listOfRestaurant?.length === 0 ? <Shimmer/> : 
      (
-        <div className="Body  ">
-             <div className="filter flex bg-blue-100 mx-2">
-            <div className = " m-3 ">
+        <div className="Body ">
+             <div className="filter flex bg-blue-100 mx-2  mt-[102px]">
+            <div className = " m-3">
                 <input type= "text" className = "ml-2 pl-4 h-[30px] " placeholder = "Enter text" 
                 value = {searchText} onChange = {(e)=>{
-                    setSearchText(e.target.value)
+                    setSearchText(e?.target?.value)
                 }}></input>
-                <button className="bg-blue-500  ml-3  hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded"
+                <button className="bg-blue-500  ml-3  hover:bg-blue-700 text-white font-bold py-2
+                 px-4 mx-2 rounded"
                  onClick = {()=>{
-                       const filteredRestaurant = listOfRestaurant.filter((res)=>
-                        res?.info?.name?.toUpperCase().includes(searchText?.toUpperCase())
+                       const filteredRestaurant = listOfRestaurant?.filter((res)=>
+                        res?.info?.name?.toUpperCase()?.includes(searchText?.toUpperCase())
                   );
                   setFilteredRestaurant(filteredRestaurant)
                 }}>Search</button>
                  </div>
            
-                <button className="bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 h-[40px] mt-3 rounded"
+                <button className="bg-blue-500   hover:bg-blue-700 text-white font-bold py-2 px-4 h-[40px] mt-3 
+                rounded"
                     onClick={() => {
                         setTopRatedButton(topRatedButton ? false : true);
                         console.log(topRatedButton)
                         if(topRatedButton){
-                            const filteredList = listOfRestaurant.filter(
+                            const filteredList = listOfRestaurant?.filter(
                                 (res) => res?.info?.avgRating > "4.3");
                             setFilteredRestaurant(filteredList)
                         }
@@ -62,7 +67,7 @@ const Body = () => {
                             }
                        }}>Top Rated Restaurant</button>
             </div>
-            <div className="flex flex-wrap h-[65vh] overflow-y-auto">
+            <div className="flex flex-wrap h-[73vh] overflow-y-auto">
                 {
                     filteredRestaurant?.map((restaurant) =>
                         (<Link key={restaurant?.info?.id} to = {"restaurant/"+restaurant?.info?.id}>
@@ -73,8 +78,7 @@ const Body = () => {
                 }
             </div>
         </div>
-
-    )
+         )
 }
 
 export default Body;

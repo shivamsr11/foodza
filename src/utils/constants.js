@@ -6,6 +6,8 @@ export const RES_MENU = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_M
 
 export const BG_IMG = "https://img.freepik.com/premium-photo/assorted-indian-recipes-food-various_79295-7226.jpg?w=740";
 
-export const BG_IMG_CART = "https://b.zmtcdn.com/web_assets/81f3ff974d82520780078ba1cfbd453a1583259680.png"
+export const BG_IMG_CART = "https://b.zmtcdn.com/web_assets/81f3ff974d82520780078ba1cfbd453a1583259680.png";
+
+export const swiggyAPI="http://localhost:8000/api/restaurants";
 
 

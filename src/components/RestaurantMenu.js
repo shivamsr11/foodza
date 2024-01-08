@@ -14,9 +14,10 @@ const RestaurantMenu = () => {
     const categories = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c) => c.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
     
     return resInfo === null ? (<ShimmerCard />) : (
-        <div className = "text-center ">
+      <div className="flex justify-center w-screen">
+        <div className = "text-center  mt-[102px]">
            
-            <h1 className = "font-bold text-4xl p-2 m-2 my-2">{name}</h1>
+            <h1 className = "font-bold text-4xl p-2  my-2">{name}</h1>
             <div className="flex items-center justify-center">
            
             <img className="w-[320px] h-[230px] rounded-lg " alt="res-logo" src={ CDN_URL+cloudinaryImageId}/>
@@ -30,6 +31,7 @@ const RestaurantMenu = () => {
               )
               )
           }
+       </div>
        </div>
     )
 }

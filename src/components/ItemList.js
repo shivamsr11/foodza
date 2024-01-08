@@ -27,12 +27,16 @@ const ItemList = ({ items }) => {
                     <div className="w-3/12 p-4">
                         <div className="absolute">
                             <div className="text-center">
-                                <div className="inline-flex p-2 pt-[3px] ml-[3.7rem] mt-12 ">
-                                    <button className="bg-blue-700 cursor-pointer text-white   h-[28px] w-[35px] rounded-l " 
+                                <div className="inline-flex p-2 pt-[3px] sm:pt-[7px] ml-[3rem] mt-12 md:pt-[7px] 
+                                md:ml-[3rem]  lg:pt-[7px] lg:ml-[3rem] xl:pt-[3px] xl:ml-[3rem]">
+                                    <button className="bg-sky-700 cursor-pointer text-white   h-[28px] w-[35px]
+                                    rounded-l sm:h-[26px] sm:w-[27px]  md:h-[25px] md:w-[28px] lg:h-[25px] lg:w-[31px]
+                                     xl:h-[28px] xl:w-[35px] "
                                     onClick={() => handleRemoveItem(item)}>
                                         -
                                     </button>
-                                    <button className="bg-blue-700 cursor-pointer text-white  h-[28px] w-[35px] rounded-l"
+                                    <button className="bg-sky-700 cursor-pointer text-white  h-[28px] w-[35px] rounded-l
+                                     sm:h-[26px] sm:w-[27px] md:h-[25px] md:w-[28px] lg:h-[25px] lg:w-[31px] xl:h-[28px] xl:w-[35px]"
                                      onClick={() => handleAddItem(item)}>
                                         +
                                     </button>

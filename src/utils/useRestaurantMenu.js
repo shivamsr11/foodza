@@ -1,5 +1,4 @@
 import {useState, useEffect} from "react";
-import {RES_MENU} from "./constants";
 
 const useRestaurantMenu = (resId) =>{
 
@@ -10,9 +9,9 @@ const useRestaurantMenu = (resId) =>{
         },[]);
 
         const fetchData = async() =>{
-            const data = await fetch(RES_MENU + resId);
-            const json = await data.json();
-            setResInfo(json.data);
+            const data = await fetch(`http://localhost:8000/api/menu?&restaurantId=${resId}`);
+            const json = await data?.json();
+            setResInfo(json?.data);
         }
        return resInfo;
 }
