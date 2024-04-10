@@ -43,18 +43,18 @@ const Header = () => {
 
   return (
     <div>
-      <div className='absolute flex justify-between'>
-        <img className=" w-screen h-[90px]
+      <div className='absolute flex justify-between '>
+        <img className="w-screen sm:w-screen md:w-screen lg:w-screen xl:w-screen h-[11vh]
          bg-[url('https://thumbs.dreamstime.com/z/healthy-plant-based-fast-food-corner-border-top-view-dark-wood-banner-background-table-scene-cauliflower-crust-pizza-212598651.jpg')]" />
       </div>
-      <div className="flex absolute justify-end w-screen">
-               <ul className = "flex pt-2 mt-2">
-                   <li className = "px-4 mt-7 text-white"><Link to = "/app">Home</Link></li>
-                   <li className = "px-4 mt-7 text-white ml-2"> <Link to = "/app/cart">
+      <div className="flex inline-block  absolute justify-end w-[100%] ">
+               <ul className = "flex font-bold text-black-200 sm:text-white">
+                   <li className = "px-[1vw] mt-[4vh] "><Link to = "/app">Home</Link></li>
+                   <li className = "px-[1vw] mt-[4vh]  ml-[1vh]"> <Link to = "/app/cart">
                       Cart-{cartItems?.length} items</Link></li>
-                  <button className="bg-blue-500 flex   hover:bg-blue-700 text-white font-bold py-2 px-4 rounded 
-                  h-[40px] my-5 ml-2" onClick = {handleSignout}>Logout</button>
-                   <li className = "px-4 mt-7 text-white ml-2">{onlineStatus ? "Online 🟢" : "Offline 🔴" }</li>
+                  <button className="bg-blue-500 flex   hover:bg-blue-700 text-white font-bold  rounded 
+                  h-[6vh] my-[3vh] ml-[1vw] py-[1.3vh] px-[1vw]" onClick = {handleSignout}>Logout</button>
+                   <li className = "px-[1.2vw] mt-[4vh]  ml-[1vh] ">{onlineStatus ? "Online 🟢" : "Offline 🔴" }</li>
               </ul>
            </div>
     </div>

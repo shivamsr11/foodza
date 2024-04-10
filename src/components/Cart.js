@@ -11,22 +11,23 @@ const Cart =()=>{
     }
 
     return(
-        <>
-        <div className="flex justify-end w-screen">
-            <div className="mt-[130px] ">
-            {cartItems?.length !== 0 &&  (<button className="p-2 mr-[30px] w-28 my-2 bg-black text-white rounded-lg" 
+        <div className="flex w-screen">
+       
+        <div className="flex justify-center p-[3vh] w-[94%]">
+            <div className="  ">
+            <h1 className="">{ cartItems?.length === 0 ? <div className="text-2xl font-bold text-center mt-[12vh] 
+                ">Cart is Empty</div> : <div className="text-2xl inline-block font-bold ml-[49%] md:  mt-[11vh] mb-[5vh]"> Cart</div>}</h1>
+                <ItemList items = {cartItems}/>
+         </div>
+         
+        </div>
+        <div className="  ">
+            <div className="mt-[16vh]">
+            {cartItems?.length !== 0 &&  (<button className="py-[0.5vh] px-[0.1vw] text-sm lg:text-md w-[16vw] sm:w-[13vw] md:w-[11vw] lg:w-[8vw] xl:w-[7vw] 2xl:w-[6vw] mx-[1vw] bg-black text-white rounded-lg" 
                 onClick={handleClearCart}>Clear Cart</button>)}
             </div>
             </div>
-        <div className="flex justify-center p-4 w-screen">
-            <div className="w-[400px] sm:w-[600px] md:w-[700px] lg:w-[700px]  xl:w-[730px]  ">
-            <h1 className="">{ cartItems?.length === 0 ? <div className="text-2xl font-bold text-center mt-[1px] 
-                mb-[32px]">Cart is Empty</div> : <div className="text-2xl font-bold text-center mt-[-100px] 
-                mb-[32px]"> Cart</div>}</h1>
-                <ItemList className = " ml-[50vh]" items = {cartItems}/>
-         </div>
         </div>
-        </>
     )
 }
 

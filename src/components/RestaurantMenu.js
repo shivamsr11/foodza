@@ -9,13 +9,14 @@ const RestaurantMenu = () => {
     const resInfo = useRestaurantMenu(resId);
 
     if (resInfo?.cards === null || resInfo?.cards === undefined) return <ShimmerCard />;
-    const { name, cuisines, costForTwoMessage, locality,cloudinaryImageId } = resInfo?.cards[0]?.card?.card?.info;
-
-    const categories = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c) => c.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
+    const data = resInfo?.cards?.filter((childCard)=>childCard.card?.card?.info);
+    const { name, cuisines, costForTwoMessage, locality,cloudinaryImageId } = data[0]?.card?.card?.info;
+    const groupedCard = resInfo?.cards.filter((grpCard)=> grpCard?.groupedCard);
+    const categories = groupedCard[0]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c) => c.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
     
     return resInfo === null ? (<ShimmerCard />) : (
-      <div className="flex justify-center w-screen">
-        <div className = "text-center  mt-[102px]">
+      <div className=" flex  justify-center w-screen">
+        <div className = "  text-center  mt-[102px]">
            
             <h1 className = "font-bold text-4xl p-2  my-2">{name}</h1>
             <div className="flex items-center justify-center">

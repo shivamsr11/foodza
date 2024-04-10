@@ -36,14 +36,14 @@ const Body = () => {
     return listOfRestaurant?.length === 0 ? <Shimmer/> : 
      (
         <div className="Body ">
-             <div className="filter flex bg-blue-100 mx-2  mt-[102px]">
-            <div className = " m-3">
-                <input type= "text" className = "ml-2 pl-4 h-[30px] " placeholder = "Enter text" 
+             <div className="filter flex bg-blue-100 mx-[2vh]  mt-[13vh]">
+            <div className = " m-[1vh]">
+                <input type= "text" className = "ml-[1vw] pl-[1vw] h-[5vh] " placeholder = "Enter text" 
                 value = {searchText} onChange = {(e)=>{
                     setSearchText(e?.target?.value)
                 }}></input>
-                <button className="bg-blue-500  ml-3  hover:bg-blue-700 text-white font-bold py-2
-                 px-4 mx-2 rounded"
+                <button className="bg-blue-500  ml-[1vw]  hover:bg-blue-700 text-white font-bold py-[1vh]
+                 px-[1vw] mx-[1vw] h-[6vh] rounded"
                  onClick = {()=>{
                        const filteredRestaurant = listOfRestaurant?.filter((res)=>
                         res?.info?.name?.toUpperCase()?.includes(searchText?.toUpperCase())
@@ -52,14 +52,14 @@ const Body = () => {
                 }}>Search</button>
                  </div>
            
-                <button className="bg-blue-500   hover:bg-blue-700 text-white font-bold py-2 px-4 h-[40px] mt-3 
-                rounded"
+                <button className="bg-blue-500   hover:bg-blue-700 text-white font-bold py-[1vh]
+                 px-[1vw] mx-[1vw] h-[6vh] my-[1vh] rounded"
                     onClick={() => {
                         setTopRatedButton(topRatedButton ? false : true);
                         console.log(topRatedButton)
                         if(topRatedButton){
                             const filteredList = listOfRestaurant?.filter(
-                                (res) => res?.info?.avgRating > "4.3");
+                                (res) => res?.info?.avgRating >= "4.3");
                             setFilteredRestaurant(filteredList)
                         }
                         else{
@@ -67,7 +67,7 @@ const Body = () => {
                             }
                        }}>Top Rated Restaurant</button>
             </div>
-            <div className="flex flex-wrap h-[73vh] overflow-y-auto">
+            <div className="flex flex-wrap h-[78vh] overflow-y-auto">
                 {
                     filteredRestaurant?.map((restaurant) =>
                         (<Link key={restaurant?.info?.id} to = {"restaurant/"+restaurant?.info?.id}>

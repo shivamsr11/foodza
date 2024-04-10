@@ -9,7 +9,7 @@ const useRestaurantMenu = (resId) =>{
         },[]);
 
         const fetchData = async() =>{
-            const data = await fetch(`http://localhost:8000/api/menu?&restaurantId=${resId}`);
+            const data = await fetch(`https://backend-swiggy-five.vercel.app/api/menu?&restaurantId=${resId}`);
             const json = await data?.json();
             setResInfo(json?.data);
         }

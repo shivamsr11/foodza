@@ -36,7 +36,7 @@ export const appRouter = createBrowserRouter([
 
 function App() {
   return (
-    <div className="flex">
+    <div className="flex inline-block sm:h-[100%] md:h-[100%] lg:h-[100%] xl:h-[100%] 2xl:h-[99%]">
       <Header />
       <div>
         <Outlet />

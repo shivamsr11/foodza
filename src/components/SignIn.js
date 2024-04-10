@@ -94,26 +94,27 @@ const SignIn = () => {
     <div>
        <div className='absolute'>
         <img className='w-screen sm:w-screen md:w-screen lg:w-screen xl:w-screen 2xl:w-screen h-screen sm:h-screen
-         md:h-screen lg:h-screen'  src = {BG_IMG} alt = "bg-logo" />
+         md:h-screen lg:h-screen xl:h-screen 2xl:h-screen'  src = {BG_IMG} alt = "bg-logo" />
       </div>
-          <form   onSubmit = {(e)=>e?.preventDefault()} className="absolute text-white p-12 w-[60vh] sm:w-[70vh] 
-          md:w-[70vh] lg:w-[70vh] xl:w-[70vh] 2xl:w-[70vh] my-20  mx-auto left-0 right-0 bg-black bg-opacity-90">
-        <h1 className=" text-3xl py-3">{isSignInForm ? "Sign In" : "Sign Up"}</h1>
+          <form   onSubmit = {(e)=>e?.preventDefault()} className="absolute text-white py-[4vh] px-[6vh] w-[49vw] sm:w-[46vw] 
+          md:w-[40vw] lg:w-[33vw] xl:w-[30vw] 2xl:w-[28vw] h-[60vh]  sm:h-[60vh] 
+          md:h-[60vh] lg:h-[60vh] xl:h-[60vh] 2xl:h-[40vh] my-[18vh]  mx-auto left-0 right-0 bg-black bg-opacity-90">
+        <h1 className=" text-xl sm:text-xl md:text-xl lg:text-2xl xl:text-3xl 2xl:text-3xl  py-[1vh]">{isSignInForm ? "Sign In" : "Sign Up"}</h1>
         {!isSignInForm &&
           <input ref = {fullName} type="text" placeholder="Full Name" title='fullName'
-           className="py-3 my-3 pl-4 w-full bg-gray-800 rounded-lg" />
+           className="py-[1vh] my-[1.5vh] pl-[1vw] w-full bg-gray-800 rounded-lg" />
         }
         <input ref = {email} type="text" placeholder="Email" title='email'
-         className="py-3 my-3 pl-4 w-full bg-gray-800 rounded-lg" onChange={handleInput} />
+         className="py-[1vh] my-[1.5vh] pl-[1vw] w-full bg-gray-800 rounded-lg" onChange={handleInput} />
          {errors.email && <p>{errors?.email}</p>}
         <input ref = {password} type="text" placeholder="Password" title='password'
-        className="py-3 my-2 pl-4 w-full bg-gray-800 rounded-lg"   onChange={handleInput} />
+        className="py-[1vh] my-[1.5vh] pl-[1vw] w-full bg-gray-800 rounded-lg"   onChange={handleInput} />
                  {errors.password && <p>{errors?.password}</p>}
-        <button className="py-3  my-6  bg-red-700 w-full rounded-lg"
+        <button className="py-[1vh]  my-[1.5vh]  bg-red-700 w-full rounded-lg"
          onClick = {handleButtonClick}>{isSignInForm ? "Sign In" : "Sign Up"}</button>
         <div className="flex cursor-pointer" onClick={toggleSignInForm}>
-          <p className="py-3 text-gray-400 ">{isSignInForm ? "New User?" : "Already registered?"}</p>
-          <p className="py-3 pl-1">{isSignInForm ? "Sign up Now" : "Sign In Now"}</p>
+          <p className="py-[0.6vh] text-gray-400 ">{isSignInForm ? "New User?" : "Already registered?"}</p>
+          <p className="py-[0.6vh] pl-[0.5vw]">{isSignInForm ? "Sign up Now" : "Sign In Now"}</p>
           </div>
         </form>
     </div>
